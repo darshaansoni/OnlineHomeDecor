@@ -53,7 +53,7 @@
 			<b><label>Username:</label></b> <input type="text" name="username" placeholder="Enter ur username"/><br>
 			<b><label>Password:</label></b> <input type="password" name="password" placeholder="Enter ur password" /><br> <br>
 				<b><input type="submit" value="Login"></b><br>
-				<p>If you are not registation</p>
+				<p>If you are not registered</p>
 				<a href="views/registeradmin.jsp">Registration</a>
 		</form>
 	</center> 

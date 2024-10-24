@@ -35,7 +35,7 @@ public class RegisterAdminController extends HttpServlet {
 	    	boolean isRegistered=adminService.registerAdmin(admin);
 	    	
 	    	if(isRegistered) {
-	    		 RequestDispatcher dispature=req.getRequestDispatcher("views/adminhome.jsp");
+	    		 RequestDispatcher dispature=req.getRequestDispatcher("views/admin.jsp");
 	  		   dispature.forward(req, res);
 	    		
 	    	}else {

@@ -3,7 +3,7 @@
 <title>Add Admin</title>
 </head>
  <style>
-        body {
+       body {
             font-family: Arial, sans-serif;
             background-color: #e6f2ff;
         }
@@ -19,30 +19,34 @@
             text-align: center;
             color: #1a75ff;
         }
-        input[type=text], input[type=username], input[type=email],input[type=contactNumber],input[type=password],input[type=confirmPassword] {
-            width: 50%;
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input[type="text"], 
+        input[type="email"], 
+        input[type="password"] {
+            width: 100%; /* Full width */
             padding: 10px;
             margin: 10px 0;
-            display: inline-block;
             border: 1px solid #ccc;
             box-sizing: border-box;
             border-radius: 4px;
         }
-        input[type=submit] {
+        input[type="submit"] {
             background-color: #1a75ff;
             color: white;
             padding: 14px 20px;
             margin: 8px 0;
             border: none;
             cursor: pointer;
-            width: 60%;
+            width: 100%; /* Full width */
             border-radius: 4px;
         }
-        input[type=submit]:hover {
-        
+        input[type="submit"]:hover {
             background-color: #0052cc;
         }
-        
     </style>
 <body>
 <center>
