@@ -3,6 +3,7 @@ package com.yash.onlineHomeDecor.serviceimpl;
 import com.yash.onlineHomeDecor.dao.AdminDao;
 import com.yash.onlineHomeDecor.daoimpl.AdminDaoImpl;
 import com.yash.onlineHomeDecor.domain.Admin;
+import com.yash.onlineHomeDecor.exception.AdminException;
 import com.yash.onlineHomeDecor.service.AdminService;
 
 public class AdminServiceImpl implements AdminService{
@@ -13,8 +14,13 @@ public class AdminServiceImpl implements AdminService{
     }
 
 	@Override
-	public boolean validateAdmin(String username, String password) throws ClassNotFoundException {
+	public boolean validateAdmin(String username, String password) throws AdminException,ClassNotFoundException {
 		// TODO Auto-generated method stub
+		
+		 if (username == null || password == null) {
+			throw new AdminException("Username and Password cannot be null");
+			
+		}
 		return adminDao.validateAdmin(username, password);
 	}
 

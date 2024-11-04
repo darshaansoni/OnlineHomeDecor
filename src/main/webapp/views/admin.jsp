@@ -52,14 +52,14 @@
 	
 	 <div class="login-container">
 	  <%
-            String successMessage = (String) request.getAttribute("successMessage");
+            String successMessage = (String) request.getAttribute("successMessageforregistration");
             if (successMessage != null) {
         %>
             <p class="success-message"><%= successMessage %></p>
         <%
             }
 
-            String errorMessage = (String) request.getAttribute("errorMessage");
+            String errorMessage = (String) request.getAttribute("errorMessageforregistration");
             if (errorMessage != null) {
         %>
             <p class="error-message"><%= errorMessage %></p>
