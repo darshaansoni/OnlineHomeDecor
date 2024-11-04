@@ -1,4 +1,12 @@
-<h2>Welcome , Admin</h2>
+
+ <%
+        String message = request.getParameter("message");
+        if (message != null) {
+    %>
+        <p style="color: green;"><%= message %></p>
+    <%
+        }
+    %>
 <ul>
 <li><a href="ManageProduct">Manage Product</a></li>
 <li><a href="ManageOrder">Manage Order</a></li>
@@ -6,3 +14,4 @@
 <li><a href="ManageInventory">Manage User</a></li>
 <li><a href="ManageReview">Manage User</a></li>
 </ul>
+  

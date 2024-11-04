@@ -1,9 +1,11 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Add Admin</title>
-</head>
- <style>
-       body {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Admin</title>
+    <style>
+        body {
             font-family: Arial, sans-serif;
             background-color: #e6f2ff;
         }
@@ -47,36 +49,79 @@
         input[type="submit"]:hover {
             background-color: #0052cc;
         }
+         .success-message {
+            color: green;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin: 20px 0;
+        }
     </style>
+</head>
 <body>
 <center>
+    <div class="addAdmin-container">
+        <h2>Add Admin</h2>
+        <form name="addadmin" onsubmit="return validateForm()" action="/onlineHomeDecor/registerAdmin" method="post">
+            <b><label>Username:</label></b>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required><br>
 
+            <b><label>Email:</label></b>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
 
- <div class="addAdmin-container">
-<h2>Add Admin</h2>
-<form  name="addadmin" action="/onlineHomeDecor/registerAdmin" method="post">
-<b><label>Username:</label></b>
-<input type="text" id="username" name="username" placeholder="Enter ur username"><br>
+            <b><label>Contact Number:</label></b>
+            <input type="text" id="contactNumber" name="contactNumber" placeholder="Enter your contact number" required><br>
 
-<b><label>Email:</label></b>
-<input type="text" id="email" name="email" placeholder="Enter ur  email" "><br>
+            <b><label>Password:</label></b>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required><br>
 
-<b><label>Contact Number:</label></b>
-<input type="text" id="contactNumber" name="contactNumber" placeholder="Enter ur contactNumber" "><br>
+            <b><label>Confirm Password:</label></b>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter your confirm password" required><br>
 
-<b><label>Password:  </label></b>
-<input type="password" id="password" name="password" placeholder="Enter ur password" ><br>
-
-<b><label>ConfirmPassword:</label></b>
-<input type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter ur confirmPassword" ><br>
-
-
-
-  <input type="submit" value="Add Admin">
-</form>
-
+            <input type="submit" value="Add Admin">
+        </form>
+    </div>
 </center>
 
-</body>
+<script>
+    function validateForm() {
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
 
+        // Validate username (must be at least 3 characters)
+        if (username.length < 3) {
+            alert("Username must be at least 3 characters long.");
+            return false;
+        }
+
+        // Validate email format
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert("Please enter a valid email address.");
+            return false;
+        }
+
+        // Validate password (must be at least 6 characters)
+        if (password.length < 6) {
+            alert("Password must be at least 6 characters long.");
+            return false;
+        }
+
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return false;
+        }
+
+        // If all validations pass
+        return true;
+    }
+</script>
+
+</body>
 </html>

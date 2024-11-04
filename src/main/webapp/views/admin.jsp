@@ -46,8 +46,26 @@
 </head>
 
 <body>
-	<center>
+<center>
+
+
+	
 	 <div class="login-container">
+	  <%
+            String successMessage = (String) request.getAttribute("successMessage");
+            if (successMessage != null) {
+        %>
+            <p class="success-message"><%= successMessage %></p>
+        <%
+            }
+
+            String errorMessage = (String) request.getAttribute("errorMessage");
+            if (errorMessage != null) {
+        %>
+            <p class="error-message"><%= errorMessage %></p>
+        <%
+            }
+        %>
 	<h2>Admin Login </h2>
 		<form action="./adminlogin" method="post">
 			<b><label>Username:</label></b> <input type="text" name="username" placeholder="Enter ur username"/><br>
@@ -56,6 +74,14 @@
 				<p>If you are not registered</p>
 				<a href="views/registeradmin.jsp">Registration</a>
 		</form>
+		 <%
+        String errorMessageforlogin = (String) request.getAttribute("errorMessage");
+        if (errorMessageforlogin != null) {
+    %>
+        <p style="color: red;"><%= errorMessageforlogin %></p>
+    <%
+        }
+    %>
 	</center> 
 	
 	  

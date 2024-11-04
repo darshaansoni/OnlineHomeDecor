@@ -34,12 +34,16 @@ public class RegisterAdminController extends HttpServlet {
 	    	
 	    	boolean isRegistered=adminService.registerAdmin(admin);
 	    	
-	    	if(isRegistered) {
-	    		 RequestDispatcher dispature=req.getRequestDispatcher("views/admin.jsp");
-	  		   dispature.forward(req, res);
-	    		
-	    	}else {
-	    		res.sendRedirect("views/admin.jsp");
-	    	}
+	    	 if (isRegistered) {
+	    	        // Set success message in request attributes
+	    	        req.setAttribute("successMessage", "Registration successful! Welcome, " + username);
+	    	        RequestDispatcher dispatcher = req.getRequestDispatcher("views/admin.jsp");
+	    	        dispatcher.forward(req, res);
+	    	    } else {
+	    	        // Redirect to admin page with an error message (optional)
+	    	        req.setAttribute("errorMessage", "Registration failed! Please try again.");
+	    	        RequestDispatcher dispatcher = req.getRequestDispatcher("views/admin.jsp");
+	    	        dispatcher.forward(req, res);
+	    	    }
 	    }
 }

@@ -14,31 +14,38 @@ import com.yash.onlineHomeDecor.serviceimpl.AdminServiceImpl;
 
 @WebServlet("/adminlogin")
 public class AdminController extends HttpServlet {
-	
-	 private AdminService adminService;
 
-	    @Override
-	    public void init() {
-	        adminService = new AdminServiceImpl();
-	    }
+	private AdminService adminService;
 
-	    @Override
-	    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-	        String username = req.getParameter("username");
-	        String password = req.getParameter("password");
+	@Override
+	public void init() {
+		adminService = new AdminServiceImpl();
+	}
 
-	        try {
-	            if (adminService.validateAdmin(username, password)) {
-	                HttpSession session = req.getSession();
-	                session.setAttribute("username", username);
-	                res.sendRedirect("views/adminhome.jsp");
-	            } else {
-	                res.sendRedirect("views/error.jsp");
-	            }
-	        } catch (ClassNotFoundException e) {
-	            e.printStackTrace();
-	            res.sendRedirect("views/error.jsp");
-	        }
-	    }
-	    
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		String username = req.getParameter("username");
+		String password = req.getParameter("password");
+
+		try {
+			if (adminService.validateAdmin(username, password)) {
+				HttpSession session = req.getSession();
+				session.setAttribute("username", username);
+				
+				
+				res.sendRedirect("views/adminhome.jsp?message=Login successful!! Welcome to Admin Dashbord, " + username);
+			} else {
+				
+				req.setAttribute("errorMessage", "Login failed! Invalid username or password.");
+				
+				req.getRequestDispatcher("views/admin.jsp").forward(req, res);
+
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			
+			req.setAttribute("errorMessage", "An error occurred while processing your request.");
+		req.getRequestDispatcher("views/admin.jsp").forward(req, res);
+		}
+	}
 }
